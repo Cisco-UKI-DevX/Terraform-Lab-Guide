@@ -6,7 +6,8 @@ While Terraform has been increasingly used in the cloud space to provision infra
 
 Exercise 0 - Installing Terraform
 
-Terraform is supported across Windows, Linux/Unix and MacOS. The downloads for the latest version can be found from the link below.Terraform is distributed as a single binary. Install Terraform by unzipping it and moving it to a directory included in your system's executable PATH. On Linux and MacOS systems you can do this through the command `$PATH` For more information on the install I'd recommend [This handy guide](https://www.vasos-koupparis.com/terraform-getting-started-install/)
+Terraform is supported across Windows, Linux/Unix and MacOS. The downloads for the latest version can be found from (here.)[https://www.terraform.io/downloads.html]
+Terraform is distributed as a single binary. Install Terraform by unzipping it and moving it to a directory included in your system's executable PATH. On Linux and MacOS systems you can do this through the command `$PATH` For more information on the install I'd recommend [This handy guide](https://www.vasos-koupparis.com/terraform-getting-started-install/)
 
 https://www.terraform.io/downloads.html
 
