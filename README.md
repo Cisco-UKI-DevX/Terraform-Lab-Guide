@@ -10,3 +10,5 @@ Terraform is supported across Windows, Linux/Unix and MacOS. The downloads for t
 Terraform is distributed as a single binary. Install Terraform by unzipping it and moving it to a directory included in your system's executable PATH. On Linux and MacOS systems you can do this through the command `$PATH` For more information on the install I'd recommend [This handy guide](https://www.vasos-koupparis.com/terraform-getting-started-install/)
 
 To verify Terraform is installed use the command `Terraform` in your shell. Terraform should return a list of available commands.
+
+![](images/terraform-install.gif)
