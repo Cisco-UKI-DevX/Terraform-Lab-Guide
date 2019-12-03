@@ -1,8 +1,8 @@
 # Infrastructure as Code with Terraform - Crawl / Walk / Run
 
-Terraform is an increaingly popular open-source infrastructure as code software tool built by HashiCorp. It enables administrators to define and provision a datacenter and cloud infrastructure using a high-level configuration language known as Hashicorp Configuration Language or JSON.
+Terraform is an increasingly popular open-source infrastructure as code software tool built by HashiCorp. It enables administrators to define and provision a datacenter and cloud infrastructure using a high-level configuration language known as Hashicorp Configuration Language or JSON.
 
-While Terraform has been increasingly used in the cloud space to provision infrastructure such as AWS and Azure we're starting to see more and more usage of this with Cisco tools including ASA and primarily ACI. 
+While Terraform has been increasingly used in the cloud space to provision infrastructure such as AWS and Azure we're starting to see more and more usage of this with Cisco tools including ASA and primarily ACI.
 
 ## Exercise 0 - Installing Terraform
 
