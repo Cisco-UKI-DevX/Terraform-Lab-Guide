@@ -12,3 +12,6 @@ Terraform is distributed as a single binary. Install Terraform by unzipping it a
 To verify Terraform is installed use the command `Terraform` in your shell. Terraform should return a list of available commands.
 
 ![](images/terraform-install.gif)
+
+## Exercise 1 - Dipping our toe in the water, creating our first tennant on ACI with Terraform
+
