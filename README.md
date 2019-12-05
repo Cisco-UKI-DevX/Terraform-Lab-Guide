@@ -21,7 +21,7 @@ In this exercise we're going to look at an example terraform config file and pro
 
 First thing you'll want to do is navigate to the examples/exercise1 folder within this project and have a look at the config.tf file. Open the file and have a look inside.
 
-Note: All Terraform configuration files will have the suffix .tf
+```Note: All Terraform configuration files will have the suffix .tf```
 
 First off in the file you'll notice that we define the username, password and url of the ACI instance in order that Terraform can authenticate. We can authenticate through using a private key or through username or password, storing credentials in plain text isn't recommended but we'll use it here so we can get up and running quickly. We'll cover other methods of authentication in later exercises. 
 
@@ -37,5 +37,4 @@ provider "aci" {
   insecure = true
 }
 ```
-
-Following that you'll see us then start to define our resources, in this initial configuration file you can see we define a Tenant called "terraform_tenant", a bridge domain associated to that tenant and an example subnet. We then define an application profile for our "demo_ap" and 3 endpoint groups for our database, web and logic tiers for our 3 tier application. Study the file and make sure you understand it
+Following that you'll see us then start to define our resources, in this initial configuration file you can see we define a Tenant called "terraform_tenant", a bridge domain associated to that tenant and an example subnet. We then define an application profile for our "demo_ap" and 3 endpoint groups for our database, web and logic tiers for our 3 tier application. Study the file and make sure you understand it. If you're looking to understand more of the capabilities we have available from the ACI provider refer to the excellent documentation which exists on the Terraform [website](https://www.terraform.io/docs/providers/aci/index.html)
