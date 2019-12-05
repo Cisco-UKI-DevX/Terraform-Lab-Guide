@@ -17,19 +17,17 @@ To run these exercises you will need an instance of ACI running. dcloud.cisco.co
 
 ## Exercise 1 - Dipping our toe in the water, creating our first resources on ACI with Terraform
 
-In this exercise we're going to look at an example terraform config file
+In this exercise we're going to look at an example terraform config file and provisioning a tenant, bridge domain, subnet, application profile and a couple of example EPGs. Common tasks you'd look to do anytime 
 
 First off in the file you'll notice that we define the username, password and url of the ACI instance in order that Terraform can authenticate. We can authenticate through using a private key or through username or password, storing credentials in plain text isn't recommended but we'll use it here so we can get up and running quickly. We'll cover other methods of authentication in later exercises.
 
->provider "aci" {
-
->  username = "admin"
-
->  password = "C1sco12345"
-
-> url      = "https://198.18.133.200"
-
->  insecure = true
-
-> }
-
+```#configure provider with your cisco aci credentials.
+provider "aci" {
+  # cisco-aci user name
+  username = "admin"
+  # cisco-aci password
+  password = "C1sco12345"
+  # cisco-aci url
+  url      = "https://198.18.133.200"
+  insecure = true
+}```
