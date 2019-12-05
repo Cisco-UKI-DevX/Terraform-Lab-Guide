@@ -13,5 +13,7 @@ To verify Terraform is installed use the command `Terraform` in your shell. Terr
 
 ![](images/terraform-install.gif)
 
-## Exercise 1 - Dipping our toe in the water, creating our first tennant on ACI with Terraform
+To run these exercises you will need an instance of ACI running. dcloud.cisco.com has a couple of instances of ACI that you can reserve and use in this lab we'll be using the "Cisco ACI 4.1 Automation v1" demo which can be reserved and used. Alternatively you can also use your own instance of ACI if you have one available.
+
+## Exercise 1 - Dipping our toe in the water, creating our first resources on ACI with Terraform
 
