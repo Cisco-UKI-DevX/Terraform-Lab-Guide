@@ -17,9 +17,13 @@ To run these exercises you will need an instance of ACI running. dcloud.cisco.co
 
 ## Exercise 1 - Dipping our toe in the water, creating our first resources on ACI with Terraform
 
-In this exercise we're going to look at an example terraform config file and provisioning a tenant, bridge domain, subnet, application profile and a couple of example EPGs. Common tasks you'd look to do anytime 
+In this exercise we're going to look at an example terraform config file and provisioning a tenant, bridge domain, subnet, application profile and a couple of example EPGs. Common tasks you'd look to do anytime your deploying a new application, its important to note that within a single terraform configuration file we can configure resources on ACI, VMWare, AWS, Azure or any other infrastructure where Terraform has a provider for. This makes Terraform a very important tool for orchestrating the multiple parts of infrastructure that currently exist within enterprise environments.
 
-First off in the file you'll notice that we define the username, password and url of the ACI instance in order that Terraform can authenticate. We can authenticate through using a private key or through username or password, storing credentials in plain text isn't recommended but we'll use it here so we can get up and running quickly. We'll cover other methods of authentication in later exercises.
+First thing you'll want to do is navigate to the examples/exercise1 folder within this project and have a look at the config.tf file. Open the file and have a look inside.
+
+Note: All Terraform configuration files will have the suffix .tf
+
+First off in the file you'll notice that we define the username, password and url of the ACI instance in order that Terraform can authenticate. We can authenticate through using a private key or through username or password, storing credentials in plain text isn't recommended but we'll use it here so we can get up and running quickly. We'll cover other methods of authentication in later exercises. 
 
 ```
 #configure provider with your cisco aci credentials.
@@ -33,3 +37,5 @@ provider "aci" {
   insecure = true
 }
 ```
+
+Following that you'll see us then start to define our resources, in this initial configuration file you can see we define a Tenant called "terraform_tenant", a bridge domain associated to that tenant and an example subnet. We then define an application profile for our "demo_ap" and 3 endpoint groups for our database, web and logic tiers for our 3 tier application. Study the file and make sure you understand it
