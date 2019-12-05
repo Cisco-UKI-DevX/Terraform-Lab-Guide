@@ -17,7 +17,7 @@ To run these exercises you will need an instance of ACI running. dcloud.cisco.co
 
 ## Exercise 1 - Dipping our toe in the water, creating our first resources on ACI with Terraform
 
-In this exercise we're going to look at an example terraform config file and provisioning a tenant, bridge domain, subnet, application profile and a couple of example EPGs. Common tasks you'd look to do anytime your deploying a new application, its important to note that within a single terraform configuration file we can configure resources on ACI, VMWare, AWS, Azure or any other infrastructure where Terraform has a provider for. This makes Terraform a very important tool for orchestrating the multiple parts of infrastructure that currently exist within enterprise environments.
+In this exercise we're going to look at an example terraform config file and provisioning a tenant, bridge domain, subnet, application profile and a couple of example EPGs. Common tasks you'd look to do anytime your deploying a new application, its important to note that within a single terraform configuration file we can configure resources on ACI, VMWare, AWS, Azure or any other infrastructure where Terraform has a provider for. This makes Terraform a very important tool for orchestrating the multiple parts of infrastructure that currently exist within enterprise environments, we'll look to cover these more advanced deployments as we go through the exercises but for now lets master the basics.
 
 First thing you'll want to do is navigate to the examples/exercise1 folder within this project and have a look at the config.tf file. Open the file and have a look inside.
 
