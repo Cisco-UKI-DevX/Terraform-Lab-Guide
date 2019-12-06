@@ -47,7 +47,18 @@ After Terraform is initialised all commands should now work. The next stage is t
 
 ![](images/terraform-plan.gif)
 
-Plan: 7 to add, 0 to change, 0 to destroy.
+Examine the output of the command and look to understand it, if it's been sucessful it should list everything we've outlined in our configuration file as the infrastructure as it stands should be free of our config. Terraform also provides a handy summary of how many adds, changes and destroys it will carry out when the testplan is executed. For example this scenario should outline:
+
+```Plan: 7 to add, 0 to change, 0 to destroy.```
+
+All thats left to do now we're happy with our changes that will be applied is to run the ```Terraform apply``` command, this will now go out and make the changes to our infrastructure that's been defined.
+
+![](images/terraform-apply.gif)
+
+Give the execution a few moments to run, it will ask you to type "yes" to confirm the changes that are about to happen. When its done you should get a nice confirmation at the bottom that the apply has been complete with 7 resources added, 0 changed and 0 destroyed. Lets now verify in ACI that the resources we requested have been created by following the animation below.
+
+![](images/ACI-check.gif)
 
 
-```Terraform apply```
+Congratuations, you've just completed your first exercise on using Terraform!
+
