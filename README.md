@@ -55,10 +55,29 @@ All thats left to do now we're happy with our changes that will be applied is to
 
 ![](images/terraform-apply.gif)
 
-Give the execution a few moments to run, it will ask you to type "yes" to confirm the changes that are about to happen. When its done you should get a nice confirmation at the bottom that the apply has been complete with 7 resources added, 0 changed and 0 destroyed. Lets now verify in ACI that the resources we requested have been created by following the animation below.
+
+Give the execution a few moments to run, it will ask you to type "yes" to confirm the changes that are about to happen. When its done you should get a nice confirmation at the bottom that the apply has been complete with 7 resources added, 0 changed and 0 destroyed. You can see from the output below that the resources are created sequentially as outlined in the configuration file. This is particuarly important in ACI as certain resources will have dependancies on others.
+
+```
+aci_tenant.terraform_tenant: Creating...
+aci_tenant.terraform_tenant: Creation complete after 2s [id=uni/tn-tenant_for_terraform]
+aci_application_profile.terraform_app: Creating...
+aci_bridge_domain.bd_for_subnet: Creating...
+aci_application_profile.terraform_app: Creation complete after 0s [id=uni/tn-tenant_for_terraform/ap-demo_ap]
+aci_application_epg.application_epg2: Creating...
+aci_application_epg.application_epg3: Creating...
+aci_application_epg.application_epg1: Creating...
+aci_bridge_domain.bd_for_subnet: Creation complete after 2s [id=uni/tn-tenant_for_terraform/BD-bd_for_subnet]
+aci_subnet.demosubnet: Creating...
+aci_subnet.demosubnet: Creation complete after 1s [id=uni/tn-tenant_for_terraform/BD-bd_for_subnet/subnet-[10.0.3.28/27]]
+aci_application_epg.application_epg2: Creation complete after 3s [id=uni/tn-tenant_for_terraform/ap-demo_ap/epg-web_epg]
+aci_application_epg.application_epg1: Creation complete after 3s [id=uni/tn-tenant_for_terraform/ap-demo_ap/epg-db_epg]
+aci_application_epg.application_epg3: Creation complete after 4s [id=uni/tn-tenant_for_terraform/ap-demo_ap/epg-log_epg]
+```
+
+Lets now verify in ACI that the resources we requested have been created by following the animation below.
 
 ![](images/ACI-check.gif)
-
 
 Congratuations, you've just completed your first exercise on using Terraform!
 
