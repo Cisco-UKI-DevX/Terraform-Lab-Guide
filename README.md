@@ -41,11 +41,11 @@ Following that you'll see us then start to define our resources, in this initial
 
 Before we can apply our state we must initialise Terraform. This will examine our config files and install the necessary providers, in this case ACI, this can be done by using the ```Terraform init``` command
 
-[](images/terraform-init.gif)
+![](images/terraform-init.gif)
 
 After Terraform is initialised all commands should now work. The next stage is to examine the changes that will be required to our infrastructure to implement our config files do this through excecuting the ```Terraform plan``` command.
 
-[](images/terraform-plan.gif)
+![](images/terraform-plan.gif)
 
 Plan: 7 to add, 0 to change, 0 to destroy.
 
