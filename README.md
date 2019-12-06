@@ -39,9 +39,11 @@ provider "aci" {
 ```
 Following that you'll see us then start to define our resources, in this initial configuration file you can see we define a Tenant called "terraform_tenant", a bridge domain associated to that tenant and an example subnet. We then define an application profile for our "demo_ap" and 3 endpoint groups for our database, web and logic tiers for our 3 tier application. Study the file and make sure you understand it. If you're looking to understand more of the capabilities we have available from the ACI provider refer to the excellent documentation which exists on the Terraform [website](https://www.terraform.io/docs/providers/aci/index.html)
 
+Before we can apply our state we must initialise Terraform. This will examine our config files and install the necessary providers, in this case ACI, this can be done by using the ```Terraform init``` command
 
-```Terraform init```
+After Terraform is initialised all commands should now work. The next stage is to examine the changes that will be required to our infrastructure to implement our config files do this through excecuting the ```Terraform plan``` command.
 
-```Terraform plan```
+Plan: 7 to add, 0 to change, 0 to destroy.
+
 
 ```Terraform apply```
