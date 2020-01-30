@@ -85,3 +85,6 @@ Lets now verify in ACI that the resources we requested have been created by foll
 
 Congratuations, you've just completed your first exercise on using Terraform!
 
+## Exercise 2 - Network as code, building a CI/CD pipeline with ACI and Terraform
+
+
