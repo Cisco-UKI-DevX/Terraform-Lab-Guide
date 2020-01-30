@@ -91,3 +91,8 @@ After exercise 1 you should now have a good grasph on what Terraform is, how you
 
 An increasingly popular way to use Terraform today is through Terraform cloud. Terraform Cloud is an SaaS application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes ways to share state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more. For more information on Terraform cloud please view the excellent documentation [here](https://www.terraform.io/docs/cloud/index.html).
 
+Step 1 - Create our repository on Github and Terraform cloud
+
+Step 2 - Configure your Terraform cloud workspace
+
+Step 3 - Create your Terraform config and build a configuration pipeline
