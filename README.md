@@ -1,6 +1,6 @@
 *This lab is part of a series of guides from the [Network Automation and Tooling workshop series](https://github.com/sttrayno/Network-Automation-Tooling)*
 
-# Infrastructure as Code with Terraform - Crawl / Walk / Run
+# Infrastructure as Code with Terraform
 
 Terraform is an increasingly popular open-source infrastructure as code software tool built by HashiCorp. It enables administrators to define and provision manage infrastructure across multiple cloud and datacenter resources. Terraform takes an infrastructure as code approach by using using a high-level configuration language known as Hashicorp Configuration Language or JSON to define the resources. Terraform differs from traditional configuraiton management tools such as Ansible as it is known for keeping state, once you define your desired state Terraform looks to build your infrastucture then records its current state and always looks to maintain the desired state the use specifies
 
@@ -93,9 +93,15 @@ In the following steps we'll use two separate config files to define our state, 
 
 ![](images/terraform-cicd.gif)
 
-During this lab we'll use Terraform Cloud, an increasingly popular way to use Terraform today is through Terraform cloud. Terraform Cloud is an SaaS application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes ways to share state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more. For more information on Terraform cloud please view the excellent documentation [here](https://www.terraform.io/docs/cloud/index.html). In this instance we will just be using Terraform to keep our state and allow multiple teams to work on a single infrastructure.
+During this lab we'll use Terraform Cloud, an increasingly popular way to use Terraform today. Terraform Cloud is an SaaS application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes ways to share state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more. For more information on Terraform cloud please view the excellent documentation [here](https://www.terraform.io/docs/cloud/index.html). 
 
-### Step 1 - Fork our repository on Github and intial configurations on Terraform cloud
+This guide has been split into two separate methods, one using the entire Terraform cloud runtime environment which will monitor configuration files on a VCS and when theres a change and carry out the plan and apply within the Terraform Cloud environment, the advantage of this is simplicity and it is very easy to build our CI/CD pipeline. However to do this the ACI controller must be accessible from the internet. 
+
+As many following this guide won't have this luxury and using resources such as sandbox and dCloud we'll only use the state tracking functionality of Terraform which allows a shared state across mtuliple users. This method is a little more complex to set up but gives more flexibility to the user in therms of the other tools that sit as part of the pipeline so theres tradeoffs from both methods.
+
+Note: you can use Terraform Enterprise to get an on-premise hosted version of Terraform cloud. This could be a viable option for some organisations
+
+### Approach 1 - Terraform Cloud application
 
 In this lab, we'll use GitHub as the Version Control System (VCS) for our workspace. In order to follow along, you'll need a GitHub Account.
 
@@ -127,7 +133,6 @@ In the next guide, you will set up your new workspace and run your first apply.
 
 Terraform Cloud organizes your Terraform configurations into workspaces. In this guide we'll configure your first workspace:
 
-
 Configure Access for the Terraform CLI
 
 Terraform's CLI needs credentials before it can access Terraform Cloud. Follow these steps to allow Terraform to access your organization.
@@ -151,7 +156,5 @@ In your text editor, paste the real token into the token argument, replacing the
 At this point, Terraform can use Terraform Cloud with any Terraform configuration that has enabled the remote backend.
 
 Check the CLI config file's permissions and ensure it can only be viewed by your local user account (0600 in traditional Unix permissions notation). Update its permissions if necessary.
-
-
 
 ### Step 3 - Create your Terraform config and build a configuration pipeline
