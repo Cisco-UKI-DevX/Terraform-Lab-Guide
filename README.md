@@ -89,6 +89,8 @@ Congratuations, you've just completed your first exercise on using Terraform!
 
 After exercise 1 you should now have a good grasp on what Terraform is, how you can define your intent for the infrastructure and how it works with ACI.
 
+![](images/terraform-cicd.gif)
+
 An increasingly popular way to use Terraform today is through Terraform cloud. Terraform Cloud is an SaaS application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes ways to share state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more. For more information on Terraform cloud please view the excellent documentation [here](https://www.terraform.io/docs/cloud/index.html).
 
 ### Step 1 - Create our repository on Github and Terraform cloud
