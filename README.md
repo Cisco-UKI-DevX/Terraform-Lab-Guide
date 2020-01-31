@@ -105,7 +105,7 @@ Note: you can use Terraform Enterprise to get an on-premise hosted version of Te
 
 In this lab, we'll use GitHub as the Version Control System (VCS) for our workspace. In order to follow along, you'll need a GitHub Account.
 
-Once you have a GitHub account, visit the example repository and use the "Fork" button at the top right of the page to create a fork of the repository into your account.
+Once you have a GitHub account, visit the example repository and use the "Fork" button at the top right of the page to create a fork of the repository into your account. Once you've done that use the `git clone` command to create a local copy on your host which you plan on running T
 
 Next, if you don't already have a Terraform Cloud account, you can create one from [the Terraform Cloud application](https://app.terraform.io/):
 
