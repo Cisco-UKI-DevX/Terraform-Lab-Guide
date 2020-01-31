@@ -93,7 +93,7 @@ An increasingly popular way to use Terraform today is through Terraform cloud. T
 
 ### Step 1 - Create our repository on Github and Terraform cloud
 
-First, if you don't already have a Terraform Cloud account, you can create one from (the Terraform Cloud application)[https://app.terraform.io/]:
+First, if you don't already have a Terraform Cloud account, you can create one from [the Terraform Cloud application](https://app.terraform.io/):
 
 
 
