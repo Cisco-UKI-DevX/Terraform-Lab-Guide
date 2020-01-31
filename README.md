@@ -87,11 +87,11 @@ Congratuations, you've just completed your first exercise on using Terraform!
 
 ## Exercise 2 - Network as code, building a CI/CD pipeline with ACI and Terraform
 
-After exercise 1 you should now have a good grasp on what Terraform is, how you can define your intent for the infrastructure and how it works with ACI.
+After exercise 1 you should now have a good grasp on what Terraform is, how you can define your intent for the infrastructure and how it works with ACI. In this exercise we're going to build a CICD pipeline to serve the purpose of automating changes to our ACI fabric. As we did in the previous steps, we'll create Terraform config files to define how we want our network (tenants, bridge domains, IP addressing) and applications (apps, epgs and contracts) to look. This time we'll store our config in a version control system (in this case Github) and monitor for changes in the config, when these changes are made the CI/CD functions of Github will apply this with Terraform.
 
 ![](images/terraform-cicd.gif)
 
-An increasingly popular way to use Terraform today is through Terraform cloud. Terraform Cloud is an SaaS application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes ways to share state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more. For more information on Terraform cloud please view the excellent documentation [here](https://www.terraform.io/docs/cloud/index.html).
+During this lab we'll use Terraform Cloud, an increasingly popular way to use Terraform today is through Terraform cloud. Terraform Cloud is an SaaS application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes ways to share state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more. For more information on Terraform cloud please view the excellent documentation [here](https://www.terraform.io/docs/cloud/index.html). In this instance we will just be using Terraform to keep our state and allow multiple teams to work on a single infrastructure.
 
 ### Step 1 - Create our repository on Github and Terraform cloud
 
@@ -128,4 +128,5 @@ In the next guide, you will set up your new workspace and run your first apply.
 ### Step 2 - Configure your Terraform cloud workspace
 
 Terraform Cloud organizes your Terraform configurations into workspaces. In this guide we'll configure your first workspace:
+
 ### Step 3 - Create your Terraform config and build a configuration pipeline
