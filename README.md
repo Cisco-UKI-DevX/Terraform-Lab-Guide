@@ -127,4 +127,31 @@ In the next guide, you will set up your new workspace and run your first apply.
 
 Terraform Cloud organizes your Terraform configurations into workspaces. In this guide we'll configure your first workspace:
 
+
+Configure Access for the Terraform CLI
+
+Terraform's CLI needs credentials before it can access Terraform Cloud. Follow these steps to allow Terraform to access your organization.
+
+Open your Terraform CLI config file in a text editor; create the file if it doesn't already exist. This file is located at %APPDATA%\terraform.rc on Windows systems, and ~/.terraformrc on other systems.
+Add the following credentials block to the config file:
+
+credentials "app.terraform.io" {
+  token = "REPLACE_ME"
+}
+Leave your editor open.
+
+In your web browser, go to the tokens section of your user settings. Open https://app.terraform.io/app/settings/tokens, or click the user icon in the upper right corner, click "User Settings", then click "Tokens" in the left sidebar.
+
+Generate a new token by entering a description and clicking the "Generate token" button. The new token will appear in a text area below the description field.
+
+Copy the token to the clipboard.
+
+In your text editor, paste the real token into the token argument, replacing the REPLACE_ME placeholder. Save the CLI config file and close your editor.
+
+At this point, Terraform can use Terraform Cloud with any Terraform configuration that has enabled the remote backend.
+
+Check the CLI config file's permissions and ensure it can only be viewed by your local user account (0600 in traditional Unix permissions notation). Update its permissions if necessary.
+
+
+
 ### Step 3 - Create your Terraform config and build a configuration pipeline
