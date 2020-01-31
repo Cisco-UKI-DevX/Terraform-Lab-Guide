@@ -107,8 +107,6 @@ Next, if you don't already have a Terraform Cloud account, you can create one fr
 
 If you've just signed up with Terraform Cloud and created a new organization, the first page you'll see is the "New Workspace" page. You can also create a new Workspace by choosing "Workspaces" from the main menu, and then the "New Workspace" button.
 
-![](images/tfc-github.gif)
-
 On the "New Workspace page", select "GitHub -> GitHub.com" to continue. A new window should open asking you to authorize Terraform Cloud to your GitHub account. If you have not logged into GitHub recently, you may need to log in first.
 
 Click the green "Authorize" button to connect Terraform Cloud to your GitHub account.
