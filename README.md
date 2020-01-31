@@ -87,7 +87,9 @@ Congratuations, you've just completed your first exercise on using Terraform!
 
 ## Exercise 2 - Network as code, building a CI/CD pipeline with ACI and Terraform
 
-After exercise 1 you should now have a good grasp on what Terraform is, how you can define your intent for the infrastructure and how it works with ACI. In this exercise we're going to build a CICD pipeline to serve the purpose of automating changes to our ACI fabric. As we did in the previous steps, we'll create Terraform config files to define how we want our network (tenants, bridge domains, IP addressing) and applications (apps, epgs and contracts) to look. This time we'll store our config in a version control system (in this case Github) and monitor for changes in the config, when these changes are made the CI/CD functions of Github will apply this with Terraform.
+After exercise 1 you should now have a good grasp on what Terraform is, how you can define your intent for the infrastructure and how it works with ACI. In this exercise we're going to build a CI/CD pipeline to serve the purpose of automating changes to our ACI fabric. As we did in the previous steps, we'll create Terraform config files to define how we want our network (tenants, bridge domains, IP addressing) and applications (apps, epgs and contracts) to look. This time we'll store our config in a version control system (in this case Github) and monitor for changes in the config, when these changes are made the CI/CD functions of Github will apply this with Terraform.
+
+In the following steps we'll use two separate config files to define our state, the idea of using multiple files is to allow different teams (in this case the network and DevOps teams) to make changes to our fabric and have them deployed to the network. As you can see from the graphic below.
 
 ![](images/terraform-cicd.gif)
 
