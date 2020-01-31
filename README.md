@@ -95,7 +95,31 @@ An increasingly popular way to use Terraform today is through Terraform cloud. T
 
 First, if you don't already have a Terraform Cloud account, you can create one from [the Terraform Cloud application](https://app.terraform.io/):
 
+If you've just signed up with Terraform Cloud and created a new organization, the first page you'll see is the "New Workspace" page. You can also create a new Workspace by choosing "Workspaces" from the main menu, and then the "New Workspace" button.
 
+New Workspace
+
+On the "New Workspace page", select "GitHub -> GitHub.com" to continue. A new window should open asking you to authorize Terraform Cloud to your GitHub account. If you have not logged into GitHub recently, you may need to log in first.
+
+GitHub Authorization
+
+Click the green "Authorize" button to connect Terraform Cloud to your GitHub account.
+
+»Choose a repository
+
+Next, you will see a list of your GitHub repositories. Choose the repository you forked in the first step. If you have a lot of GitHub repositories, you may need to filter the list to find the correct one.
+
+Choose Repository
+
+»Create the workspace
+
+On the final step, leave the workspace name and "Advanced options" unchanged, and click the purple "Create workspace" button to create the workspace.
+
+It will take a few minutes for Terraform Cloud to connect to your GitHub repository. Once that's complete, you should see a notification that your configuration was uploaded successfully:
+
+Configuration Successful
+
+In the next guide, you will set up your new workspace and run your first apply.
 
 ### Step 2 - Configure your Terraform cloud workspace
 
