@@ -95,6 +95,8 @@ An increasingly popular way to use Terraform today is through Terraform cloud. T
 
 First, if you don't already have a Terraform Cloud account, you can create one from [the Terraform Cloud application](https://app.terraform.io/):
 
+![](images/terraform-signup.gif)
+
 If you've just signed up with Terraform Cloud and created a new organization, the first page you'll see is the "New Workspace" page. You can also create a new Workspace by choosing "Workspaces" from the main menu, and then the "New Workspace" button.
 
 New Workspace
