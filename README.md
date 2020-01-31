@@ -95,7 +95,7 @@ In the following steps we'll use two separate config files to define our state, 
 
 During this lab we'll use Terraform Cloud, an increasingly popular way to use Terraform today is through Terraform cloud. Terraform Cloud is an SaaS application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes ways to share state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more. For more information on Terraform cloud please view the excellent documentation [here](https://www.terraform.io/docs/cloud/index.html). In this instance we will just be using Terraform to keep our state and allow multiple teams to work on a single infrastructure.
 
-### Step 1 - Fork our repository on Github and Terraform cloud
+### Step 1 - Fork our repository on Github and intial configurations on Terraform cloud
 
 In this lab, we'll use GitHub as the Version Control System (VCS) for our workspace. In order to follow along, you'll need a GitHub Account.
 
