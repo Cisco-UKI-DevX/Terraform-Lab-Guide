@@ -4,7 +4,7 @@
 
 Terraform is an increasingly popular open-source infrastructure as code software tool built by HashiCorp. It enables administrators to define and provision manage infrastructure across multiple cloud and datacenter resources. Terraform takes an infrastructure as code approach by using using a high-level configuration language known as Hashicorp Configuration Language or JSON to define the resources. Terraform differs from traditional configuraiton management tools such as Ansible as it is known for keeping state, once you define your desired state Terraform looks to build your infrastucture then records its current state and always looks to maintain the desired state the use specifies
 
-While Terraform has been increasingly used in the cloud space to provision infrastructure such as VMWare, AWS and Azure we're starting to see more and more usage of this with Cisco infrastructure with support today for ASA firewalls and Cisco ACI in the data centre (Application Centric Infrastructure) within these exercises we'll look to focus on how Terraform can be used to configure ACI and provision resources in todays enterprise IT environment.
+While Terraform has been increasingly used in the cloud space to provision infrastructure such as VMWare, AWS and Azure, we're starting to see more and more usage of this with Cisco infrastructure with support today for ASA firewalls and Cisco ACI in the data centre (Application Centric Infrastructure). Within these exercises we'll look to focus on how Terraform can be used to configure ACI and provision resources in todays enterprise IT environment.
 
 ## Exercise 0 - Installing Terraform
 
@@ -85,23 +85,23 @@ Lets now verify in ACI that the resources we requested have been created by foll
 
 Congratuations, you've just completed your first exercise on using Terraform!
 
-## Exercise 2 - Network as code, building a CI/CD pipeline with ACI and Terraform
+## Exercise 2 - Using Terraform Cloud with ACI for collaborative and automated provisioning
 
-After exercise 1 you should now have a good grasp on what Terraform is, how you can define your intent for the infrastructure and how it works with ACI. In this exercise we're going to build a CI/CD pipeline to serve the purpose of automating changes to our ACI fabric. As we did in the previous steps, we'll create Terraform config files to define how we want our network (tenants, bridge domains, IP addressing) and applications (apps, epgs and contracts) to look. This time we'll store our config in a version control system (in this case Github) and monitor for changes in the config, when these changes are made the CI/CD functions of Github will apply this with Terraform.
+After exercise 1 you should now have a good grasp on what Terraform is, how you can define your intent for the infrastructure and how it works with ACI. In this exercise we're going to build a leverage Terraform cloud to start automating changes to our ACI fabric. As we did in the previous steps, we'll create Terraform config files to define how we want our network (tenants, bridge domains, IP addressing) and applications (apps, epgs and contracts) to look. This time we'll store our config in a version control system (in this case Github) to start with the idea of provisioning. If you're new to VCS's you might want to check out this [guide](https://github.com/GShuttleworth/Introduction-to-Source-Control)
 
 In the following steps we'll use two separate config files to define our state, the idea of using multiple files is to allow different teams (in this case the network and DevOps teams) to make changes to our fabric and have them deployed to the network. As you can see from the graphic below.
 
 ![](images/terraform-cicd.gif)
 
-During this lab we'll use Terraform Cloud, an increasingly popular way to use Terraform today. Terraform Cloud is an SaaS application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes ways to share state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more. For more information on Terraform cloud please view the excellent documentation [here](https://www.terraform.io/docs/cloud/index.html). 
+As mentioned previously, during this lab we'll use Terraform Cloud, an increasingly popular way to use Terraform today. Terraform Cloud is an SaaS application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes ways to share state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more. For more information on Terraform cloud please view the excellent documentation [here](https://www.terraform.io/docs/cloud/index.html). 
 
-This guide has been split into two separate methods, one using the entire Terraform cloud runtime environment which will monitor configuration files on a VCS and when theres a change and carry out the plan and apply within the Terraform Cloud environment, the advantage of this is simplicity and it is very easy to build our CI/CD pipeline. However to do this the ACI controller must be accessible from the internet. 
+There are two ways in which Terraform Cloud can run, remote and local. Remote usies the entire Terraform cloud runtime environment which will monitor configuration files on a VCS and when theres a change and carry out the plan and apply within the Terraform Cloud environment, the advantage of this is simplicity and it is very easy to build our CI/CD pipeline. However to do this the ACI controller must be accessible from the internet which with enterprise IT systems isn't always possible.
 
-As many following this guide won't have this luxury and using resources such as sandbox and dCloud we'll only use the state tracking functionality of Terraform which allows a shared state across mtuliple users. This method is a little more complex to set up but gives more flexibility to the user in therms of the other tools that sit as part of the pipeline so theres tradeoffs from both methods.
+> Note: you can use Terraform Enterprise to get an on-premise hosted version of Terraform cloud. This could be a viable option for some organisations, but does come at a cost.
 
-Note: you can use Terraform Enterprise to get an on-premise hosted version of Terraform cloud. This could be a viable option for some organisations
+In local mode the Terraform runtime will excecute on the local machine however we still have the tracking functionality of Terraform which allows a shared state across multiple users. The advantage of this is it allows an easy way to share state between multiple users, in our case the DevOps and Infrastructure teams who can both manage their invdivual parts of the Terraform config. This method is a little more complex to set up but gives more flexibility to the user in therms of the other tools that sit as part of the pipeline so theres tradeoffs from both methods. As we're using a dCloud environment which sites beside a VPN this will probably be the easiest way for yourself to do this lab, but I'll outline both methods here.
 
-### Approach 1 - Terraform Cloud application
+### Approach 1 - Terraform Cloud (Remote mode)
 
 In this lab, we'll use GitHub as the Version Control System (VCS) for our workspace. In order to follow along, you'll need a GitHub Account.
 
@@ -158,3 +158,5 @@ At this point, Terraform can use Terraform Cloud with any Terraform configuratio
 Check the CLI config file's permissions and ensure it can only be viewed by your local user account (0600 in traditional Unix permissions notation). Update its permissions if necessary.
 
 ### Step 3 - Create your Terraform config and build a configuration pipeline
+
+### Approach 2 - Terraform Cloud (local mode)
