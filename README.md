@@ -101,15 +101,21 @@ There are two ways in which Terraform Cloud can run, remote and local. Remote us
 
 In local mode the Terraform runtime will excecute on the local machine however we still have the tracking functionality of Terraform which allows a shared state across multiple users. The advantage of this is it allows an easy way to share state between multiple users, in our case the DevOps and Infrastructure teams who can both manage their invdivual parts of the Terraform config. This method is a little more complex to set up but gives more flexibility to the user in therms of the other tools that sit as part of the pipeline so theres tradeoffs from both methods. As we're using a dCloud environment which sites beside a VPN this will probably be the easiest way for yourself to do this lab, but I'll outline both methods here.
 
-### Approach 1 - Terraform Cloud (Remote mode)
+### Step 0 - Pre-requisites 
 
 In this lab, we'll use GitHub as the Version Control System (VCS) for our workspace. In order to follow along, you'll need a GitHub Account.
 
-Once you have a GitHub account, visit the example repository and use the "Fork" button at the top right of the page to create a fork of the repository into your account. Once you've done that use the `git clone` command to create a local copy on your host which you plan on running T
+Once you have a GitHub account, visit the [example repository](https://github.com/sttrayno/tfc-aci-example/tree/master) and use the "Fork" button at the top right of the page to create a fork of the repository into your account. Once you've done that use the `git clone` command to create a local copy on your host too.
+
+`git clone https://github.com/sttrayno/tfc-aci-example.`
 
 Next, if you don't already have a Terraform Cloud account, you can create one from [the Terraform Cloud application](https://app.terraform.io/):
 
 ![](images/terraform-signup.gif)
+
+### Approach 1 - Terraform Cloud (Remote mode)
+
+### Step 1
 
 If you've just signed up with Terraform Cloud and created a new organization, the first page you'll see is the "New Workspace" page. You can also create a new Workspace by choosing "Workspaces" from the main menu, and then the "New Workspace" button.
 
@@ -128,34 +134,6 @@ It may take a few minutes for Terraform Cloud to connect to your GitHub reposito
 Configuration Successful
 
 In the next guide, you will set up your new workspace and run your first apply.
-
-### Step 2 - Configure your Terraform cloud workspace
-
-Terraform Cloud organizes your Terraform configurations into workspaces. In this guide we'll configure your first workspace:
-
-Configure Access for the Terraform CLI
-
-Terraform's CLI needs credentials before it can access Terraform Cloud. Follow these steps to allow Terraform to access your organization.
-
-Open your Terraform CLI config file in a text editor; create the file if it doesn't already exist. This file is located at %APPDATA%\terraform.rc on Windows systems, and ~/.terraformrc on other systems.
-Add the following credentials block to the config file:
-
-credentials "app.terraform.io" {
-  token = "REPLACE_ME"
-}
-Leave your editor open.
-
-In your web browser, go to the tokens section of your user settings. Open https://app.terraform.io/app/settings/tokens, or click the user icon in the upper right corner, click "User Settings", then click "Tokens" in the left sidebar.
-
-Generate a new token by entering a description and clicking the "Generate token" button. The new token will appear in a text area below the description field.
-
-Copy the token to the clipboard.
-
-In your text editor, paste the real token into the token argument, replacing the REPLACE_ME placeholder. Save the CLI config file and close your editor.
-
-At this point, Terraform can use Terraform Cloud with any Terraform configuration that has enabled the remote backend.
-
-Check the CLI config file's permissions and ensure it can only be viewed by your local user account (0600 in traditional Unix permissions notation). Update its permissions if necessary.
 
 ### Step 3 - Create your Terraform config and build a configuration pipeline
 
