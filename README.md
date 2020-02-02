@@ -175,3 +175,6 @@ On the "New Workspace page", select "No VCS connection" and give the workspace a
 On the final step, "Advanced options" unchanged, and click the purple "Create workspace" button to create the workspace.
 
 Now your workspace has been created, go into settings > general and set the workspace to local. Save your changes and set the TFC window to one side.
+
+![](images/tfc-workspace.gif)
+
