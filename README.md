@@ -133,14 +133,13 @@ It may take a few minutes for Terraform Cloud to connect to your GitHub reposito
 
 ### Step 2 - Advanced workspace configuration and first run
 
-When you've created your initial workspace you're then given two options
+When you've created your initial workspace you're then given two options, to configure your workspace variables for the config file or to queue a plan to start the deployment
 
 For an example we've left the variable hostname in our config file just to explain the process of adding variables into our workspace. 
 
-In order to add the variable either select the button "Configure Variables" or the Varaibles tab from the workspace screen. Add a variable "hostname" with your value, in our case "http://198.18.133.200" to point towards our APIC controller. Save the variable you've created.
+In order to add the variable either select the button "Configure Variables" or the "Variables" tab from the workspace screen. Add a variable "hostname" with your value, in our case "http://198.18.133.200" to point towards our APIC controller. Save the variable you've created.
 
 [](images/tfc-variables.gif)
-
 
 
 ### Approach 2 - Terraform Cloud (local mode)
