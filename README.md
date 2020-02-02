@@ -115,7 +115,7 @@ Next, if you don't already have a Terraform Cloud account, you can create one fr
 
 ### Approach 1 - Terraform Cloud (Remote mode)
 
-### Step 1
+### Step 1
 
 If you've just signed up with Terraform Cloud and created a new organization, the first page you'll see is the "New Workspace" page. You can also create a new Workspace by choosing "Workspaces" from the main menu, and then the "New Workspace" button.
 
@@ -135,6 +135,6 @@ Configuration Successful
 
 In the next guide, you will set up your new workspace and run your first apply.
 
-### Step 3 - Create your Terraform config and build a configuration pipeline
+### Step 2 - Create your Terraform config and build a configuration pipeline
 
 ### Approach 2 - Terraform Cloud (local mode)
