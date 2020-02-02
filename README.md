@@ -235,7 +235,7 @@ Give the execution a few moments to run, all should go sucessfully and we can ve
 
 ![](images/tfc-state.gif)
 
-This process doesn't look to much different but this concept of a shared state now allows multiple individuals and teams to work collaboratively to provision and manage our infrastructure defined in the .tf configs. Should a change be made by one user on their machine, this will be tracked and updated across all others in the organization. TFC also provides the concept of a lock, which stops anyone else from making changes while some may be ongoing. All these features are essential to operating Terraform at any kind of scale.
+This process doesn't look to much different from exercise 1but this concept of a shared state now allows multiple individuals and teams to work collaboratively to provision and manage our infrastructure defined in the .tf configs. Should a change be made by one user on their machine, this will be tracked and updated across all others in the organization. TFC also provides the concept of a lock, which stops anyone else from making changes while some may be ongoing. All these features are essential to operating Terraform at any kind of scale.
 
 And so congratulations, you've now got an understanding of Terraform Cloud and how it can be used to create a more robust, collaborative way of using Terraform to build infrastructure. In further exercises we'll look to create a more complex pipelines with checking and testing built in. If you have any feedback or issues with this lab please raise an issue or get in touch with me.
 
