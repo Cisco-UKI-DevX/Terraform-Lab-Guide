@@ -107,7 +107,7 @@ In this lab, we'll use GitHub as the Version Control System (VCS) for our worksp
 
 Once you have a GitHub account, visit the [example repository](https://github.com/sttrayno/tfc-aci-example/tree/master) and use the "Fork" button at the top right of the page to create a fork of the repository into your account. Once you've done that use the `git clone` command to create a local copy on your host too.
 
-`git clone https://github.com/sttrayno/tfc-aci-example.`
+`git clone https://github.com/sttrayno/tfc-aci-example.` - This is crucial if you're following approach 2
 
 Next, if you don't already have a Terraform Cloud account, you can create one from [the Terraform Cloud application](https://app.terraform.io/):
 
@@ -158,3 +158,20 @@ When the plan runs, exactly as the CLI version did. Terraform will display the p
 Terraform Cloud will then ask you to confirm and apply the changes proposed
 
 ### Approach 2 - Terraform Cloud (local mode)
+
+As we mentioned in the introduction another approach is to simply use Terraform Cloud as the backend only and a place to store Terraform state. When we manage infrastructure with Terraform, a .tfstate file is maintained, when new resources is defined in
+config a difference is ran during the plan stage and this is how Terraform decides what it needs to create or destroy. This statefile. While useful poses a challenge when working in a collaborative environment, where multiple teams are making changes to Terraform state (In our case the DevOps and Infrastructure teams).
+
+To solve this problem it is recommended when using Terraform outside a test environment to keep a central state, there are many options for doing this one of the most popular by is Terraform Cloud. 
+
+As we mentioned earlier, as our dCloud environment we're using for this lab sits behind a VPN full Terraform Cloud runtime isn't a viable option as theres no direct network access. Therefore in this exercise we will show how to use TFC as a way to keep central state and have mutliple teams making/applying changes to a Terraform config.
+
+### Step 1
+
+Just as we did in approach 1. If you've just signed up with Terraform Cloud and created a new organization, the first page you'll see is the "New Workspace" page. You can also create a new Workspace by choosing "Workspaces" from the main menu, and then the "New Workspace" button.
+
+On the "New Workspace page", select "No VCS connection" and give the workspace a name
+
+On the final step, "Advanced options" unchanged, and click the purple "Create workspace" button to create the workspace.
+
+Now your workspace has been created, go into settings > general and set the workspace to local. Save your changes and set the TFC window to one side.
