@@ -139,13 +139,13 @@ For an example we've left the variable hostname in our config file just to expla
 
 In order to add the variable either select the button "Configure Variables" or the "Variables" tab from the workspace screen. Add a variable "hostname" with your value, in our case "https://198.18.133.200" to point towards our APIC controller. Save the variable you've created. If you'd like to create more variables and customise your config file feel free to, but in this guide I just wanted to give you the basics in Terraform variables so you're familiar
 
-[](images/tfc-variables.gif)
+![](images/tfc-variables.gif)
 
 >As of time of writing the ACI provider for Terraform is not supported by version 0.12, therefore we need to run v0.11.14. To configure this on Terraform Cloud simple go to the settings tab > general and set the version to 0.11.14.
 
 >From the settings you can also configure other parameters such as the Terraform Working Directory which is the directory from your repository which you will excecute Terraform commands in, by default this will use the root which is what our repo uses, however you may want to change this as you if your own repo.
 
-[](images/tfc-version.gif)
+![](images/tfc-version.gif)
  
 Now we've set up our workspace correctly, the only thing left to do is plan and apply the config. Much as we did in exercise 1.
 
@@ -153,7 +153,7 @@ In Terrafrom Cloud a plan will be run anytime that the user defines or anytime t
 
 When the plan runs, exactly as the CLI version did. Terraform will display the proposed changes from the plan.
 
-[](images/tfc-que.gif)
+![](images/tfc-que.gif)
 
 Terraform Cloud will then ask you to confirm and apply the changes proposed
 
