@@ -219,21 +219,21 @@ First navigate to the directory of that where your config files are stored on yo
 
 As we would when working with a config file for the first time run the ```Terraform init```to initialise your providers and in this instance our newly configured shared backend 
 
-![](images/terraform-init.gif)
+![](images/tfc-init.gif)
 
 After Terraform is initialised all commands should now work. As always the next stage is to run the ```Terraform plan``` command and see what resources will be created
 
-![](images/terraform-plan.gif)
+![](images/tfc-plan-local.gif)
 
 Examine the output as you normally would and ensure it is as expected, you should be familiar with this by now:
 
 All thats left to do now we're happy with our changes that will be applied is to run the ```Terraform apply``` command to push our changes to the infrastructure. Confirm with yes when prompted.
 
-![](images/terraform-apply.gif)
+![](images/tfc-apply-local.gif)
 
-Give the execution a few moments to run, 
+Give the execution a few moments to run, all should go sucessfully and we can verify our infrastructure has been created within our ACI GUI. What you should also verify is by going to TFC GUI and checking the state tab from your workspace you created that a new state has been created and saved. As can be seen from the graphic below.
 
-Now finally 
+![](images/tfc-state.gif)
 
 This process doesn't look to much different but this concept of a shared state now allows multiple individuals and teams to work collaboratively to provision and manage our infrastructure defined in the .tf configs. Should a change be made by one user on their machine, this will be tracked and updated across all others in the organization. TFC also provides the concept of a lock, which stops anyone else from making changes while some may be ongoing. All these features are essential to operating Terraform at any kind of scale.
 
