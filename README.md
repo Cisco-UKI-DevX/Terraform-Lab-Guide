@@ -166,15 +166,15 @@ To solve this problem it is recommended when using Terraform outside a test envi
 
 As we mentioned earlier, as our dCloud environment we're using for this lab sits behind a VPN full Terraform Cloud runtime isn't a viable option as theres no direct network access. Therefore in this exercise we will show how to use TFC as a way to keep central state and have mutliple teams making/applying changes to a Terraform config.
 
-### Step 1
+### Step 1 - Creating a workspace on Terraform Cloud
 
 Just as we did in approach 1. If you've just signed up with Terraform Cloud and created a new organization, the first page you'll see is the "New Workspace" page. You can also create a new Workspace by choosing "Workspaces" from the main menu, and then the "New Workspace" button.
 
-On the "New Workspace page", select "No VCS connection" and give the workspace a name
+This time on the "New Workspace page", select "No VCS connection" and give the workspace a name
 
-On the final step, "Advanced options" unchanged, and click the purple "Create workspace" button to create the workspace.
+On the final step give the workspace a name, leave "Advanced options" unchanged, and click the purple "Create workspace" button to create the workspace.
 
-Now your workspace has been created, go into settings > general and set the workspace to local. Save your changes and set the TFC window to one side.
+Now your workspace has been created, go into "Settings > General" and set the workspace runtime to local - This means the plan and apply commands will run on your local machine. Save your changes and set the TFC window to one side.
 
 ![](images/tfc-workspace.gif)
 
