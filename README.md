@@ -148,6 +148,14 @@ In order to add the variable either select the button "Configure Variables" or t
 [](images/tfc-version.gif)
  
 Now we've set up our workspace correctly, the only thing left to do is plan and apply the config. Much as we did in exercise 1.
+
+In Terrafrom Cloud a plan will be run anytime that the user defines or anytime that a change is detected within the VCS. As we're just doing this for the first time and no changes are being made to the Github we will run our own plan by pressing the "Queue Plan" button on the top right, give a reason and watch the plan being run. The proposed changes will then be stored in a queue for the next apply.
+
+When the plan runs, exactly as the CLI version did. Terraform will display the proposed changes from the plan.
+
+[](images/tfc-que.gif)
+
+Terraform Cloud will then ask you to confirm and apply the changes proposed
   
 
 ### Approach 2 - Terraform Cloud (local mode)
