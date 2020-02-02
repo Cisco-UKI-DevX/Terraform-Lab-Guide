@@ -180,7 +180,9 @@ Now your workspace has been created, go into "Settings > General" and set the wo
 
 ### Step 2 - Configuring Terraform locally
 
-Now we have our workspace we have to configure our Terraform CLI to use TFC as the backend in order to store our infrastructures state, thankfully this is quite easy. Simply create or edit a file called .terraformrc to provide your credentials 
+Now we have our workspace we have to configure our Terraform CLI to use TFC as the backend in order to store our infrastructures state, thankfully this is quite easy. Simply create or edit a file called .terraformrc to provide your token. To create this token go to user settings > token as shown below and create a new token. Then add the below excerpt to your .terraformrc file which is stored either in your %APPDATA% directory on windows or the users home directory on MacOS/Linux. You may need to create the file as it isn't created by default.
+
+![](images/tfc-token.gif)
 
 ```
 credentials "app.terraform.io" {
@@ -188,11 +190,9 @@ credentials "app.terraform.io" {
 }
 ```
 
-Add the above config with an token which you create from your user settings.
+Once you've configured the credentials. All that is left to do is go into the config-terraform.tf which I've included as part of the repo and change the organization to your TFC username, this and the credentials will direct Terraform to your TFC backend.
 
-Once you've configured the credentials. All that is left to do is go into the config-terraform.tf and change the organization to your TFC username, this and the credentials will direct Terraform to your TFC backend.
-
-Also make sure your workspace name below matches what you have configued in TFC.
+Also make sure your workspace name below matches what you have configued in TFC. This is very important
 
 ```
 terraform {
