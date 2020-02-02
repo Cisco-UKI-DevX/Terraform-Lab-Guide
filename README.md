@@ -137,7 +137,7 @@ When you've created your initial workspace you're then given two options, to con
 
 For an example we've left the variable hostname in our config file just to explain the process of adding variables into our workspace. 
 
-In order to add the variable either select the button "Configure Variables" or the "Variables" tab from the workspace screen. Add a variable "hostname" with your value, in our case "http://198.18.133.200" to point towards our APIC controller. Save the variable you've created. If you'd like to create more variables and customise your config file feel free to, but in this guide I just wanted to give you the basics in Terraform variables so you're familiar
+In order to add the variable either select the button "Configure Variables" or the "Variables" tab from the workspace screen. Add a variable "hostname" with your value, in our case "https://198.18.133.200" to point towards our APIC controller. Save the variable you've created. If you'd like to create more variables and customise your config file feel free to, but in this guide I just wanted to give you the basics in Terraform variables so you're familiar
 
 [](images/tfc-variables.gif)
 
