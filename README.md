@@ -180,7 +180,36 @@ Now your workspace has been created, go into "Settings > General" and set the wo
 
 ### Step 2 - Configuring Terraform locally
 
+Now we have our workspace we have to configure our Terraform CLI to use TFC as the backend in order to store our infrastructures state, thankfully this is quite easy. Simply create or edit a file called .terraformrc to provide your credentials 
+
+```credentials "app.terraform.io" {
+  token = "<YOUR TOKEN KEY HERE>"
+}
+```
+
+Add the above config with an token which you create from your user settings.
+
+Once you've configured the credentials. All that is left to do is go into the config-terraform.tf and change the organization to your TFC username, this and the credentials will direct Terraform to your TFC backend.
+
+Also make sure your workspace name below matches what you have configued in TFC.
+
+```terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "sttrayno"
+
+    workspaces {
+      name = "tfc-aci-example-local"
+    }
+  }
+}
+```
+
+As mentioned, we will not be using TFC to make the changes, this is going to be done locally on the machine and initiated by the user. More on that in the next step.
+
 ### Step 3 - Applying Terraform config
+
+Now lets build our infrastructure
 
 Congratulations, you've now got an understanding of Terraform Cloud and how it can be used to create a more robust, collaborative way of using Terraform to build infrastructure. In further exercises we'll look to create a more complex pipeline with checking and testing built in. If you have any feedback or issues with this lab please raise an issue or get in touch with me.
 
