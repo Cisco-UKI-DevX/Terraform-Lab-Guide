@@ -17,7 +17,7 @@ To verify Terraform is installed use the command `Terraform` in the shell. Terra
 
 To run these exercises you will need an instance of ACI. dcloud.cisco.com has a couple of instances of ACI that you can reserve and use in this lab we'll be using the "Cisco ACI 4.1 Automation v1" demo. Alternatively you can also use your own instance of ACI if you have one available or use the DevNet sandbox, the only drawback of using the sandbox is you cannot get direct API access to the ACI sim and must go through an RDP client to get access, which makes getting started a bit more convuluted, but feel free to use the sandbox if you'd prefer.
 
-## Exercise 1 - Dipping our toe in the water, creating our first resources on ACI with Terraform
+# Exercise 1 - Dipping our toe in the water, creating our first resources on ACI with Terraform
 
 In this exercise we're going to look at understanding an example terraform config file thats defines the resources we're looking to privision. In this case our configuration file looks to provision a tenant, bridge domain, subnet, application profile and a couple of example Endpoint groupss related to the application. These are common tasks you'd look to do anytime your deploying a new application. 
 
@@ -85,7 +85,7 @@ Lets now verify in ACI that the resources we requested have been created by foll
 
 Congratuations, you've just completed your first exercise on using Terraform!
 
-## Exercise 2 - Using Terraform Cloud with ACI for collaborative and automated provisioning
+# Exercise 2 - Using Terraform Cloud with ACI for collaborative and automated provisioning
 
 After exercise 1 you should now have a good grasp on what Terraform is, how you can define your intent for the infrastructure and how it works with ACI. In this exercise we're going to build on this and leverage Terraform cloud to start automating more changes to our ACI fabric. As we did in the previous steps, we'll create Terraform config files to define how we want our network (tenants, bridge domains, IP addressing) and applications (apps, epgs and contracts) to look. This time we'll store our config in a version control system (in this case Github) to start with the idea of provisioning. If you're new to VCS's you might want to check out this [guide](https://github.com/GShuttleworth/Introduction-to-Source-Control)
 
@@ -113,7 +113,7 @@ Next, if you don't already have a Terraform Cloud account, you can create one fr
 
 ![](images/terraform-signup.gif)
 
-### Approach 1 - Terraform Cloud (Remote mode)
+## Approach 1 - Terraform Cloud (Remote mode)
 
 ### Step 1
 
@@ -157,7 +157,7 @@ When the plan runs, exactly as the CLI version did. Terraform will display the p
 
 Terraform Cloud will then ask you to confirm and apply the changes proposed
 
-### Approach 2 - Terraform Cloud (local mode)
+## Approach 2 - Terraform Cloud (local mode)
 
 As we mentioned in the introduction another approach is to simply use Terraform Cloud as the backend only and a place to store Terraform state. When we manage infrastructure with Terraform, a .tfstate file is maintained, when new resources is defined in
 config a difference is ran during the plan stage and this is how Terraform decides what it needs to create or destroy. This statefile. While useful poses a challenge when working in a collaborative environment, where multiple teams are making changes to Terraform state (In our case the DevOps and Infrastructure teams).
