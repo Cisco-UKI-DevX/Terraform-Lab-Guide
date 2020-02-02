@@ -2,7 +2,7 @@
 
 # Infrastructure as Code with Terraform
 
-Terraform is an increasingly popular open-source infrastructure as code software tool built by HashiCorp. It enables administrators to define and provision manage infrastructure across multiple cloud and datacenter resources. Terraform takes an infrastructure as code approach by using using a high-level configuration language known as Hashicorp Configuration Language or JSON to define the resources. Terraform differs from traditional configuraiton management tools such as Ansible as it is known for keeping state, once you define your desired state Terraform looks to build your infrastucture then records its current state and always looks to maintain the desired state the use specifies. This is quite a key concept which we'll dig into more in Exercise 2.
+Terraform is an increasingly popular open-source infrastructure as code software tool built by HashiCorp. It enables administrators to define, provision and manage infrastructure across multiple cloud and datacenter resources. Terraform takes an infrastructure as code approach by using using a high-level configuration language known as Hashicorp Configuration Language or JSON to define the resources. Terraform differs from traditional configuration management tools such as Ansible as it is known for keeping state of the infrastructure, once you define your desired state through Terraform config files. Terraform looks to build your infrastucture,records it's current state and always looks to maintain the desired state the config specifies specifies. This is quite a key concept which we'll dig into more in Exercise 2.
 
 While Terraform has been increasingly used in the cloud space to provision infrastructure such as VMWare, AWS and Azure, we're starting to see more and more usage of this with Cisco infrastructure with support today for ASA firewalls and Cisco ACI in the data centre (Application Centric Infrastructure). Within these exercises we'll look to focus on how Terraform can be used to configure ACI and provision resources in todays enterprise IT environment.
 
@@ -27,7 +27,7 @@ First thing you'll want to do is navigate to the examples/exercise1 folder withi
 
 ```Note: All Terraform configuration files will have the suffix .tf```
 
-First off in the file you'll notice that we define the username, password and url of the ACI instance in order that Terraform can authenticate with ACI. We can authenticate through using a private key or through username or password as shown here, storing credentials in plain text isn't recommended but we'll make an exception and use it here so we can get up and running quickly. We'll cover other methods of authentication in later exercises. 
+First off in the file you'll notice that we define the username, password and url of the ACI instance in order that Terraform can authenticate with ACI. We can authenticate through using a private key or through username or password as shown here, storing credentials in plain text isn't recommended but we'll make an exception and use it here so we can get up and running quickly. We'll cover other methods of authentication later.
 
 ```
 #configure provider with your cisco aci credentials.
@@ -97,13 +97,13 @@ In the following steps we'll use separate config files to define our state, the 
 
 As mentioned previously, during this lab we'll use Terraform Cloud, an increasingly popular way to use Terraform today. Terraform Cloud is an SaaS application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes ways to share state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations, and more. For more information on Terraform cloud please view the excellent documentation [here](https://www.terraform.io/docs/cloud/index.html). 
 
-There are two ways in which Terraform Cloud can execute, remote and local. Remote uses the entire TerraformCcloud runtime environment which will monitor configuration files on a VCS and when theres a change and carry out the plan and apply within the Terraform Cloud environment, the advantage of this is simplicity and it is very easy to build our CI/CD pipeline. However to do this the ACI controller must be accessible from the internet which with enterprise IT systems isn't always possible and might not be possible for you in this lab.
+There are two ways in which Terraform Cloud can execute, remote and local. Remote uses the entire Terraform Cloud runtime environment which will monitor configuration files on a VCS and when a change is detected carry out the plan and apply within the Terraform Cloud environment, the advantage of this is simplicity and it is very easy to build a CI/CD pipeline with our config. However to do this the ACI controller must be accessible from the internet which with enterprise IT systems isn't always possible and might not be possible for you in this lab. Also we may want to build in checks and tests into our pipeline so this method isn't very flexible.
 
 > Note: you can use Terraform Enterprise to get an on-premise hosted version of Terraform cloud. This could be a viable option for some organisations, but does come at a cost.
 
-In local mode the Terraform runtime will excecute on the local machine, however we still have the tracking functionality of Terraform which allows a shared state across multiple users. The advantage of this is it allows an easy way to share state which is a problem that comes up often in Terraform deployments, in our case the DevOps and Infrastructure teams who can both manage their invdivual parts of the Terraform config and apply as required without having to worry about the other team. 
+In local mode the Terraform runtime will excecute on the local machine, however we still have the state tracking functionality of Terraform which allows a shared state across multiple users. The advantage of this is it allows an easy way to share the infrastructure state which is a problem that comes up often in Terraform deployments, in our case the DevOps and Infrastructure teams who can both manage their invdivual parts of the Terraform config and apply as required without having to worry about the other team. It also provides the advantage of providing a 'lock' which ensures two users cannot make a change to the configuration at the same time.
 
-This method is a little more complex to set up but as we're using a dCloud environment which sites beside a VPN this will probably be the easiest way for yourself to do this lab, however we'll outline both methods here in this lab
+This method is a little more complex to set up but as we're using a dCloud environment which sites behind a VPN this will probably be the easiest way for yourself to do this lab, however we'll outline both methods here in this lab, so if you do have a cloud hosted ACI feel free to do both.
 
 ### Step 0 - Pre-requisites 
 
@@ -121,13 +121,13 @@ Next, if you don't already have a Terraform Cloud account, you can create one fr
 
 ### Step 1
 
-If you've just signed up with Terraform Cloud and created a new organization, the first page you'll see is the "New Workspace" page. You can also create a new Workspace by choosing "Workspaces" from the main menu, and then the "New Workspace" button.
+If you've just signed up with Terraform Cloud and created a new organization, the first page you'll see is the "New Workspace" page. You can also create a new Workspace by choosing "Workspaces" tab from the main menu, and then the "New Workspace" button.
 
-On the "New Workspace page", select "GitHub -> GitHub.com" to continue. A new window should open asking you to authorize Terraform Cloud to your GitHub account. If you have not logged into GitHub recently, you may need to log in first.
+On the "New Workspace page", under VCS select "GitHub -> GitHub.com" to continue. A new window should open asking you to authorize Terraform Cloud to your GitHub account. You may need to login to Github to authorise this.
 
 Click the green "Authorize" button to connect Terraform Cloud to your GitHub account.
 
-Next, you will see a list of your GitHub repositories. Choose the repository you forked in the first step. If you have a lot of GitHub repositories, you may need to filter the list to find the correct one.
+Next, you will see a list of your GitHub repositories. Choose the repository you forked in the first step. If you have a lot of GitHub repositories, you may need to filter the list to find the correct one. It's best practice to only give TFC access to the repository we're using in this example.
 
 On the final step, leave the workspace name and "Advanced options" unchanged, and click the purple "Create workspace" button to create the workspace.
 
@@ -137,13 +137,15 @@ It may take a few minutes for Terraform Cloud to connect to your GitHub reposito
 
 ### Step 2 - Advanced workspace configuration and first run
 
-When you've created your initial workspace you're then given two options, to configure your workspace variables for the config file or to queue a plan to start the deployment
+When you've created your initial workspace you're then given two options, to configure your workspace variables for the config file or to queue a plan to start the deployment.
 
 For an example we've left the variable hostname in our config file just to explain the process of adding variables into our workspace. 
 
 In order to add the variable either select the button "Configure Variables" or the "Variables" tab from the workspace screen. Add a variable "hostname" with your value, in our case "https://198.18.133.200" to point towards our APIC controller. Save the variable you've created. If you'd like to create more variables and customise your config file feel free to, but in this guide I just wanted to give you the basics in Terraform variables so you're familiar
 
 ![](images/tfc-variables.gif)
+
+#### Important - changes you have to make
 
 >As of time of writing the ACI provider for Terraform is not supported by version 0.12, therefore we need to run v0.11.14. To configure this on Terraform Cloud simple go to the settings tab > general and set the version to 0.11.14.
 
@@ -163,10 +165,9 @@ Terraform Cloud will then ask you to confirm and apply the changes proposed
 
 ## Approach 2 - Terraform Cloud (local mode)
 
-As we mentioned in the introduction another approach is to simply use Terraform Cloud as the backend only and a place to store Terraform state. When we manage infrastructure with Terraform, a .tfstate file is maintained, when new resources is defined in
-config a difference is ran during the plan stage and this is how Terraform decides what it needs to create or destroy. This statefile. While useful poses a challenge when working in a collaborative environment, where multiple teams are making changes to Terraform state (In our case the DevOps and Infrastructure teams).
+As we mentioned in the introduction, another approach is to simply use Terraform Cloud as the backend only and a place to store Terraform state. When we manage infrastructure with Terraform, a .tfstate file is maintained, when new resources is defined in config a comparison is ran during the plan stage and this is how Terraform decides what it needs to create or destroy based on the diff between these two files. The statefile while useful poses a challenge when working in a collaborative environment, where multiple teams are making changes to Terraform state (In our case the DevOps and Infrastructure teams).
 
-To solve this problem it is recommended when using Terraform outside a test environment to keep a central state, there are many options for doing this one of the most popular by is Terraform Cloud. 
+To solve this problem it is recommended when using Terraform outside a test/PoC environment to keep a central state, there are many options for doing this one of the most popular by is Terraform Cloud. 
 
 As we mentioned earlier, as our dCloud environment we're using for this lab sits behind a VPN full Terraform Cloud runtime isn't a viable option as theres no direct network access. Therefore in this exercise we will show how to use TFC as a way to keep central state and have mutliple teams making/applying changes to a Terraform config.
 
@@ -184,7 +185,7 @@ Now your workspace has been created, go into "Settings > General" and set the wo
 
 ### Step 2 - Configuring Terraform locally
 
-Now we have our workspace we have to configure our Terraform CLI to use TFC as the backend in order to store our infrastructures state, thankfully this is quite easy. Simply create or edit a file called .terraformrc to provide your token. To create this token go to user settings > token as shown below and create a new token. Then add the below excerpt to your .terraformrc file which is stored either in your %APPDATA% directory on windows or the users home directory on MacOS/Linux. You may need to create the file as it isn't created by default.
+Now we have our workspace we have to configure our Terraform CLI to use TFC as the backend in order to store our infrastructures state, thankfully this is quite easy. Simply create or edit a file called .terraformrc to provide your token. To create this token go to `User Settings > Token` as shown below and create a new token. Then add the below excerpt to your .terraformrc file which is stored either in your %APPDATA% directory on windows or the users home directory on MacOS/Linux. You may need to create the file as it isn't created by default.
 
 ![](images/tfc-token.gif)
 
@@ -202,7 +203,7 @@ Also make sure your workspace name below matches what you have configued in TFC.
 terraform {
   backend "remote" {
     hostname = "app.terraform.io"
-    organization = "sttrayno"
+    organization = "<YOUR ORGANISATION NAME>"
 
     workspaces {
       name = "tfc-aci-example-local"
@@ -225,7 +226,7 @@ As we would when working with a config file for the first time run the ```Terraf
 
 ![](images/tfc-init.gif)
 
-After Terraform is initialised all commands should now work. As always the next stage is to run the ```Terraform plan``` command and see what resources will be created
+After Terraform is initialised all commands should now work. As always the next stage is to run the ```Terraform plan``` command and see what resources will be created.
 
 ![](images/tfc-plan-local.gif)
 
