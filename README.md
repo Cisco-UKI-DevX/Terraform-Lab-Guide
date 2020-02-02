@@ -145,7 +145,7 @@ In order to add the variable either select the button "Configure Variables" or t
 
 > From the settings you can also configure other parameters such as the Terraform Working Directory which is the directory from your repository which you will excecute Terraform commands in, by default this will use the root which is what our repo uses, however you may want to change this as you if your own repo.
 
-<insert image here>
+[](images/tfc-version.gif)
  
 Now we've set up our workspace correctly, the only thing left to do is plan and apply the config. Much as we did in exercise 1.
   
