@@ -211,7 +211,29 @@ As mentioned, we will not be using TFC to make the changes, this is going to be 
 
 ### Step 3 - Applying Terraform config
 
-Now lets build our infrastructure
+Now lets build our infrastructure, this part of the process is pretty similar to what we did in exercise 1
+
+Before we begin we're assuming you have your tfc-aci-examples git repo cloned on your local machine. In this exercise this is acting as our single source of truth fo the network,
+
+First navigate to the directory of that where your config files are stored on your local machine.
+
+As we would when working with a config file for the first time run the ```Terraform init```to initialise your providers and in this instance our newly configured shared backend 
+
+![](images/terraform-init.gif)
+
+After Terraform is initialised all commands should now work. As always the next stage is to run the ```Terraform plan``` command and see what resources will be created
+
+![](images/terraform-plan.gif)
+
+Examine the output as you normally would and ensure it is as expected, you should be familiar with this by now:
+
+All thats left to do now we're happy with our changes that will be applied is to run the ```Terraform apply``` command to push our changes to the infrastructure. Confirm with yes when prompted.
+
+![](images/terraform-apply.gif)
+
+Give the execution a few moments to run, 
+
+Now finally 
 
 Congratulations, you've now got an understanding of Terraform Cloud and how it can be used to create a more robust, collaborative way of using Terraform to build infrastructure. In further exercises we'll look to create a more complex pipeline with checking and testing built in. If you have any feedback or issues with this lab please raise an issue or get in touch with me.
 
