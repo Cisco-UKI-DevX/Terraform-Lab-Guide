@@ -141,5 +141,10 @@ In order to add the variable either select the button "Configure Variables" or t
 
 [](images/tfc-variables.gif)
 
+> As of time of writing the ACI provider for Terraform is not supported by version 0.12, therefore we need to run v0.11.14. To configure this on Terraform Cloud simple go to the settings tab > general and set the version to 0.11.14.
+
+> From the settings you can also configure other parameters such as the Terraform Working Directory which is the directory from your repository which you will excecute Terraform commands in, by default this will use the root which is what our repo uses, however you may want to change this as you if your own repo.
+
+<insert image here>
 
 ### Approach 2 - Terraform Cloud (local mode)
