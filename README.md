@@ -182,7 +182,8 @@ Now your workspace has been created, go into "Settings > General" and set the wo
 
 Now we have our workspace we have to configure our Terraform CLI to use TFC as the backend in order to store our infrastructures state, thankfully this is quite easy. Simply create or edit a file called .terraformrc to provide your credentials 
 
-```credentials "app.terraform.io" {
+```
+credentials "app.terraform.io" {
   token = "<YOUR TOKEN KEY HERE>"
 }
 ```
@@ -193,7 +194,8 @@ Once you've configured the credentials. All that is left to do is go into the co
 
 Also make sure your workspace name below matches what you have configued in TFC.
 
-```terraform {
+```
+terraform {
   backend "remote" {
     hostname = "app.terraform.io"
     organization = "sttrayno"
