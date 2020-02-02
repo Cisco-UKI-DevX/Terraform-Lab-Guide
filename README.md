@@ -178,3 +178,9 @@ Now your workspace has been created, go into "Settings > General" and set the wo
 
 ![](images/tfc-workspace.gif)
 
+### Step 2 - Configuring Terraform locally
+
+### Step 3 - Applying Terraform config
+
+Congratulations, you've now got an understanding of Terraform Cloud and how it can be used to create a more robust, collaborative way of using Terraform to build infrastructure. In further exercises we'll look to create a more complex pipeline with checking and testing built in. If you have any feedback or issues with this lab please raise an issue or get in touch with me.
+
