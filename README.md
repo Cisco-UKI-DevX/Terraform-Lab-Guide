@@ -2,7 +2,7 @@
 
 # Infrastructure as Code with Terraform
 
-Terraform is an increasingly popular open-source infrastructure as code software tool built by HashiCorp. It enables administrators to define and provision manage infrastructure across multiple cloud and datacenter resources. Terraform takes an infrastructure as code approach by using using a high-level configuration language known as Hashicorp Configuration Language or JSON to define the resources. Terraform differs from traditional configuraiton management tools such as Ansible as it is known for keeping state, once you define your desired state Terraform looks to build your infrastucture then records its current state and always looks to maintain the desired state the use specifies
+Terraform is an increasingly popular open-source infrastructure as code software tool built by HashiCorp. It enables administrators to define and provision manage infrastructure across multiple cloud and datacenter resources. Terraform takes an infrastructure as code approach by using using a high-level configuration language known as Hashicorp Configuration Language or JSON to define the resources. Terraform differs from traditional configuraiton management tools such as Ansible as it is known for keeping state, once you define your desired state Terraform looks to build your infrastucture then records its current state and always looks to maintain the desired state the use specifies. This is quite a key concept which we'll dig into more in Exercise 2
 
 While Terraform has been increasingly used in the cloud space to provision infrastructure such as VMWare, AWS and Azure, we're starting to see more and more usage of this with Cisco infrastructure with support today for ASA firewalls and Cisco ACI in the data centre (Application Centric Infrastructure). Within these exercises we'll look to focus on how Terraform can be used to configure ACI and provision resources in todays enterprise IT environment.
 
@@ -83,13 +83,15 @@ Lets now verify in ACI that the resources we requested have been created by foll
 
 ![](images/ACI-check.gif)
 
-Congratuations, you've just completed your first exercise on using Terraform!
+Congratuations, you've just completed your first exercise on using Terraform! 
 
 # Exercise 2 - Using Terraform Cloud with ACI for collaborative and automated provisioning
 
-After exercise 1 you should now have a good grasp on what Terraform is, how you can define your intent for the infrastructure and how it works with ACI. In this exercise we're going to build on this and leverage Terraform cloud to start automating more changes to our ACI fabric. As we did in the previous steps, we'll create Terraform config files to define how we want our network (tenants, bridge domains, IP addressing) and applications (apps, epgs and contracts) to look. This time we'll store our config in a version control system (in this case Github) to start with the idea of provisioning. If you're new to VCS's you might want to check out this [guide](https://github.com/GShuttleworth/Introduction-to-Source-Control)
+After exercise 1 you should now have a good grasp on what Terraform is, how you can define your intent for the infrastructure and a little on how it works with ACI.
 
-In the following steps we'll use two separate config files to define our state, the idea of using multiple files is to allow different teams (in this case the network and DevOps teams) to make changes to our fabric and have them deployed to the network. As you can see from the graphic below.
+In this exercise we're going to build on this and leverage Terraform cloud to start automating more changes to our ACI fabric. As we did in the previous steps, we'll create Terraform config files to define how we want our network (tenants, bridge domains, IP addressing) and applications (apps, epgs and contracts) to look. This time we'll store our config in a version control system (in this case Github) to start with the idea of provisioning. If you're new to VCS you might want to check out this [guide](https://github.com/GShuttleworth/Introduction-to-Source-Control)
+
+In the following steps we'll use two separate config files to define our state, the idea of using multiple files is to allow different teams (in this case the Network and DevOps teams) to make changes to our fabric and have them deployed to the network. As you can see from the graphic below.
 
 ![](images/terraform-cicd.gif)
 
