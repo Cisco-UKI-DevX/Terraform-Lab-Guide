@@ -161,7 +161,11 @@ When the plan runs, exactly as the CLI version did. Terraform will display the p
 
 ![](images/tfc-que.gif)
 
-Terraform Cloud will then ask you to confirm and apply the changes proposed. Should you have the need to you could queue multiple plans and run them during a specified change window. Terraform Cloud provides a nice environment where we can monitor and view history of plans and changes as they are made.
+Terraform Cloud will then ask you to confirm and apply the changes proposed. Should you have the need to you could queue multiple plans and run them during a specified change window. When you're ready simply press the confirm and apply button to start your Terraform apply. Terraform Cloud provides a nice environment where we can monitor and view history of plans and changes as they are made. 
+
+![](images/tfc-apply.gif)
+
+All that's left to now is verify that the changes have been made in the ACI GUI as we did in the last step of exercise 1.
 
 ## Approach 2 - Terraform Cloud (local mode)
 
