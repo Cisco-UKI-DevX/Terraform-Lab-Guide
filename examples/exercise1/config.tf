@@ -1,10 +1,10 @@
-#configure provider with your cisco aci credentials.
+# Configure provider with your Cisco ACI credentials
 provider "aci" {
-  # cisco-aci user name
+  # Cisco ACI user name
   username = "admin"
-  # cisco-aci password
+  # Cisco ACI password
   password = "C1sco12345"
-  # cisco-aci url
+  # Cisco ACI URL
   url      = "https://198.18.133.200"
   insecure = true
 }
@@ -39,57 +39,54 @@ resource "aci_application_profile" "terraform_app" {
 
 resource "aci_application_epg" "application_epg1" {
     application_profile_dn  = "${aci_application_profile.terraform_app.id}"
-    name                            = "db_epg"
+    name                          = "db_epg"
     description                   = "%s"
     annotation                    = "tag_epg"
-    exception_tag               = "0"
-    flood_on_encap            = "disabled"
-    fwd_ctrl                    = "none"
-    has_mcast_source            = "no"
-    is_attr_based_e_pg      = "no"
-    match_t                         = "AtleastOne"
-    name_alias                  = "alias_epg"
-    pc_enf_pref                 = "unenforced"
-    pref_gr_memb                = "exclude"
-    prio                            = "unspecified"
-    shutdown                    = "no"
+    exception_tag                 = "0"
+    flood_on_encap                = "disabled"
+    fwd_ctrl                      = "none"
+    has_mcast_source              = "no"
+    is_attr_based_e_pg            = "no"
+    match_t                       = "AtleastOne"
+    name_alias                    = "alias_epg"
+    pc_enf_pref                   = "unenforced"
+    pref_gr_memb                  = "exclude"
+    prio                          = "unspecified"
+    shutdown                      = "no"
   }
 
 resource "aci_application_epg" "application_epg2" {
     application_profile_dn  = "${aci_application_profile.terraform_app.id}"
-    name                            = "web_epg"
+    name                          = "web_epg"
     description                   = "%s"
     annotation                    = "tag_epg"
-    exception_tag               = "0"
-    flood_on_encap            = "disabled"
-    fwd_ctrl                    = "none"
-    has_mcast_source            = "no"
-    is_attr_based_e_pg      = "no"
-    match_t                         = "AtleastOne"
-    name_alias                  = "alias_epg"
-    pc_enf_pref                 = "unenforced"
-    pref_gr_memb                = "exclude"
-    prio                            = "unspecified"
-    shutdown                    = "no"
+    exception_tag                 = "0"
+    flood_on_encap                = "disabled"
+    fwd_ctrl                      = "none"
+    has_mcast_source              = "no"
+    is_attr_based_e_pg            = "no"
+    match_t                       = "AtleastOne"
+    name_alias                    = "alias_epg"
+    pc_enf_pref                   = "unenforced"
+    pref_gr_memb                  = "exclude"
+    prio                          = "unspecified"
+    shutdown                      = "no"
   }
-
 
 resource "aci_application_epg" "application_epg3" {
     application_profile_dn  = "${aci_application_profile.terraform_app.id}"
-    name                            = "log_epg"
+    name                          = "log_epg"
     description                   = "%s"
     annotation                    = "tag_epg"
-    exception_tag               = "0"
-    flood_on_encap            = "disabled"
-    fwd_ctrl                    = "none"
-    has_mcast_source            = "no"
-    is_attr_based_e_pg      = "no"
-    match_t                         = "AtleastOne"
-    name_alias                  = "alias_epg"
-    pc_enf_pref                 = "unenforced"
-    pref_gr_memb                = "exclude"
-    prio                            = "unspecified"
-    shutdown                    = "no"
+    exception_tag                 = "0"
+    flood_on_encap                = "disabled"
+    fwd_ctrl                      = "none"
+    has_mcast_source              = "no"
+    is_attr_based_e_pg            = "no"
+    match_t                       = "AtleastOne"
+    name_alias                    = "alias_epg"
+    pc_enf_pref                   = "unenforced"
+    pref_gr_memb                  = "exclude"
+    prio                          = "unspecified"
+    shutdown                      = "no"
   }
-
-
