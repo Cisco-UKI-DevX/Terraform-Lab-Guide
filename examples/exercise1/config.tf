@@ -106,3 +106,35 @@ resource "aci_contract" "any_to_log" {
   name      = "any_to_log"
   scope     = "tenant"
 }
+
+# Contract Filters
+## HTTPS Traffic
+resource "aci_filter" "https_traffic" {
+  tenant_dn = "${aci_tenant.tenant.id}"
+  name      = "https_traffic"
+}
+
+resource "aci_filter_entry" "https" {
+  filter_dn   = "${aci_filter.https_traffic.id}"
+  name        = "https"
+  ether_t     = "ip"
+  prot        = "tcp"
+  # Note using `443` here works, but is represented as `https` in the model
+  # Using `https` prevents TF trying to set it to `443` every run
+  d_from_port = "https"
+  d_to_port   = "https"
+}
+## DB Traffic
+resource "aci_filter" "db_traffic" {
+  tenant_dn = "${aci_tenant.tenant.id}"
+  name      = "db_traffic"
+}
+
+resource "aci_filter_entry" "mariadb" {
+  filter_dn   = "${aci_filter.db_traffic.id}"
+  name        = "mariadb"
+  ether_t     = "ip"
+  prot        = "tcp"
+  d_from_port = "3306"
+  d_to_port   = "3306"
+}
