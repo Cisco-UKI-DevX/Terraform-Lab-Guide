@@ -46,7 +46,7 @@ resource "aci_application_profile" "terraform_app" {
 resource "aci_application_epg" "web" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "web"
-  name_alias              = "web_epg"
+  name_alias              = "Nginx"
   relation_fv_rs_cons     = ["${aci_contract.web_to_app.name}", 
                              "${aci_contract.any_to_log.name}"]
 }
@@ -54,7 +54,7 @@ resource "aci_application_epg" "web" {
 resource "aci_application_epg" "app" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "app"
-  name_alias              = "web_epg"
+  name_alias              = "NodeJS"
   relation_fv_rs_prov     = ["${aci_contract.web_to_app.name}"]
   relation_fv_rs_cons     = ["${aci_contract.app_to_db.name}",
                              "${aci_contract.app_to_auth.name}",
@@ -64,7 +64,7 @@ resource "aci_application_epg" "app" {
 resource "aci_application_epg" "db_cache" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "db_cache"
-  name_alias              = "db_cache_epg"
+  name_alias              = "DB_Cache"
   relation_fv_rs_prov     = ["${aci_contract.app_to_db.name}"]
   relation_fv_rs_cons     = ["${aci_contract.cache_to_db.name}",
                              "${aci_contract.any_to_log.name}"]
@@ -72,20 +72,20 @@ resource "aci_application_epg" "db_cache" {
 resource "aci_application_epg" "db" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "db"
-  name_alias              = "db_epg"
+  name_alias              = "MariaDB"
   relation_fv_rs_prov     = ["${aci_contract.cache_to_db.name}"]
   relation_fv_rs_cons     = ["${aci_contract.any_to_log.name}"]     
 }
 resource "aci_application_epg" "log" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "log"
-  name_alias              = "log_epg"
+  name_alias              = "Logstash"
   relation_fv_rs_prov     = ["${aci_contract.any_to_log.name}"]
 }
 resource "aci_application_epg" "auth" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "auth"
-  name_alias              = "auth_epg"
+  name_alias              = "Auth"
   relation_fv_rs_prov     = ["${aci_contract.app_to_auth.name}"]
   relation_fv_rs_cons     = ["${aci_contract.any_to_log.name}"]
 }
