@@ -34,7 +34,8 @@ resource "aci_subnet" "demosubnet" {
 
 resource "aci_application_profile" "terraform_app" {
   tenant_dn  = "${aci_tenant.terraform_tenant.id}"
-  name       = "demo_ap"
+  name       = "terraform_app"
+  name_alias = "demo_ap"
   prio       = "level1"
 }
 
