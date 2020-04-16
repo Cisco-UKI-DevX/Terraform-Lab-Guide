@@ -40,19 +40,34 @@ resource "aci_application_profile" "terraform_app" {
 }
 
 resource "aci_application_epg" "web" {
-    application_profile_dn  = "${aci_application_profile.terraform_app.id}"
-    name                    = "web"
-    name_alias              = "web_epg"
-  }
+  application_profile_dn  = "${aci_application_profile.terraform_app.id}"
+  name                    = "web"
+  name_alias              = "web_epg"
+}
 
 resource "aci_application_epg" "app" {
-    application_profile_dn  = "${aci_application_profile.terraform_app.id}"
-    name                    = "app"
-    name_alias              = "web_epg"
-  }
+  application_profile_dn  = "${aci_application_profile.terraform_app.id}"
+  name                    = "app"
+  name_alias              = "web_epg"
+}
 
+resource "aci_application_epg" "db_cache" {
+  application_profile_dn  = "${aci_application_profile.terraform_app.id}"
+  name                    = "db_cache"
+  name_alias              = "db_cache_epg"
+}
 resource "aci_application_epg" "db" {
-    application_profile_dn  = "${aci_application_profile.terraform_app.id}"
-    name                    = "db"
-    name_alias              = "db_epg"
-  }
+  application_profile_dn  = "${aci_application_profile.terraform_app.id}"
+  name                    = "db"
+  name_alias              = "db_epg"
+}
+resource "aci_application_epg" "log" {
+  application_profile_dn  = "${aci_application_profile.terraform_app.id}"
+  name                    = "log"
+  name_alias              = "log_epg"
+}
+resource "aci_application_epg" "auth" {
+  application_profile_dn  = "${aci_application_profile.terraform_app.id}"
+  name                    = "auth"
+  name_alias              = "auth_epg"
+}
