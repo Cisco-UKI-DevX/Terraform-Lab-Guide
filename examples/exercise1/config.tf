@@ -52,6 +52,7 @@ resource "aci_application_epg" "web" {
   name_alias              = "Nginx"
   relation_fv_rs_cons     = ["${aci_contract.web_to_app.name}", 
                              "${aci_contract.any_to_log.name}"]
+  relation_fv_rs_dom_att  = ["uni/vmmp-VMware/dom-My-vCenter"]
 }
 
 resource "aci_application_epg" "app" {
@@ -62,6 +63,7 @@ resource "aci_application_epg" "app" {
   relation_fv_rs_cons     = ["${aci_contract.app_to_db.name}",
                              "${aci_contract.app_to_auth.name}",
                              "${aci_contract.any_to_log.name}"]
+  relation_fv_rs_dom_att  = ["uni/vmmp-VMware/dom-My-vCenter"]
 }
 
 resource "aci_application_epg" "db_cache" {
@@ -71,6 +73,7 @@ resource "aci_application_epg" "db_cache" {
   relation_fv_rs_prov     = ["${aci_contract.app_to_db.name}"]
   relation_fv_rs_cons     = ["${aci_contract.cache_to_db.name}",
                              "${aci_contract.any_to_log.name}"]
+  relation_fv_rs_dom_att  = ["uni/vmmp-VMware/dom-My-vCenter"]
 }
 resource "aci_application_epg" "db" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
@@ -78,12 +81,14 @@ resource "aci_application_epg" "db" {
   name_alias              = "MariaDB"
   relation_fv_rs_prov     = ["${aci_contract.cache_to_db.name}"]
   relation_fv_rs_cons     = ["${aci_contract.any_to_log.name}"]     
+  relation_fv_rs_dom_att  = ["uni/vmmp-VMware/dom-My-vCenter"]
 }
 resource "aci_application_epg" "log" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "log"
   name_alias              = "Logstash"
   relation_fv_rs_prov     = ["${aci_contract.any_to_log.name}"]
+  relation_fv_rs_dom_att  = ["uni/vmmp-VMware/dom-My-vCenter"]
 }
 resource "aci_application_epg" "auth" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
@@ -91,6 +96,7 @@ resource "aci_application_epg" "auth" {
   name_alias              = "Auth"
   relation_fv_rs_prov     = ["${aci_contract.app_to_auth.name}"]
   relation_fv_rs_cons     = ["${aci_contract.any_to_log.name}"]
+  relation_fv_rs_dom_att  = ["uni/vmmp-VMware/dom-My-vCenter"]
 }
 
 # Contract Definitions
