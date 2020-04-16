@@ -35,7 +35,7 @@ resource "aci_bridge_domain" "bd_for_subnet" {
 
 resource "aci_subnet" "demosubnet" {
   bridge_domain_dn                    = "${aci_bridge_domain.bd_for_subnet.id}"
-  ip                                  = "10.0.3.28/27"
+  ip                                  = "10.0.0.1/16"
   scope                               = "private"
   description                         = "This subject is created by terraform"
   ctrl                                = "unspecified"
