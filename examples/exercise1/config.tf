@@ -44,9 +44,6 @@ resource "aci_subnet" "demosubnet" {
   ip                                  = "10.0.0.1/16"
   scope                               = "private"
   description                         = "This subject is created by terraform"
-  ctrl                                = "unspecified"
-  preferred                           = "no"
-  virtual                             = "yes"
 }
 
 # App Profile Definition
