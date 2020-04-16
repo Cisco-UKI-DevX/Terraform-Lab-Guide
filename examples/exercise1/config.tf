@@ -12,14 +12,14 @@ provider "aci" {
 # Tenant Definition
 resource "aci_tenant" "terraform_tenant" {
   # Note the names cannot be modified in ACI, use the name_alias instead
-  # The name becomed the distinguished named with the model, this is the reference name
+  # The name becomes the distinguished named with the model, this is the reference name
   # The model can be deployed A/B if the name, aka the model, must change
   name        = "terraform_tenant"
   name_alias  = "tenant_for_terraform"
   description = "This tenant is created by terraform ACI provider"
 }
 
-# Networkin Definition
+# Networking Definition
 resource "aci_bridge_domain" "bd_for_subnet" {
   tenant_dn   = "${aci_tenant.terraform_tenant.id}"
   name        = "bd_for_subnet"
