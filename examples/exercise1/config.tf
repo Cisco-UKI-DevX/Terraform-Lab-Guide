@@ -107,6 +107,37 @@ resource "aci_contract" "any_to_log" {
   scope     = "tenant"
 }
 
+# Subject Definitions
+resource "aci_contract_subject" "only_web_secure_traffic" {
+  contract_dn                  = "${aci_contract.web_to_app.id}"
+  name                         = "only_web_secure_traffic"
+  relation_vz_rs_subj_filt_att = ["${aci_filter.https_traffic.name}"]
+}
+
+resource "aci_contract_subject" "only_db_traffic" {
+  contract_dn                  = "${aci_contract.app_to_db.id}"
+  name                         = "only_db_traffic"
+  relation_vz_rs_subj_filt_att = ["${aci_filter.db_traffic.name}"]
+}
+
+resource "aci_contract_subject" "only_auth_traffic" {
+  contract_dn                  = "${aci_contract.app_to_auth.id}"
+  name                         = "only_auth_traffic"
+  relation_vz_rs_subj_filt_att = ["${aci_filter.https_traffic.name}"]
+}
+
+resource "aci_contract_subject" "only_log_traffic" {
+  contract_dn                  = "${aci_contract.any_to_log.id}"
+  name                         = "only_log_traffic"
+  relation_vz_rs_subj_filt_att = ["${aci_filter.https_traffic.name}"]
+}
+
+resource "aci_contract_subject" "only_db_cache_traffic" {
+  contract_dn                  = "${aci_contract.cache_to_db.id}"
+  name                         = "only_db_cache_traffic"
+  relation_vz_rs_subj_filt_att = ["${aci_filter.db_traffic.name}"]
+}
+
 # Contract Filters
 ## HTTPS Traffic
 resource "aci_filter" "https_traffic" {
