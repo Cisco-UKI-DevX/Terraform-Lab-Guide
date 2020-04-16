@@ -9,12 +9,14 @@ provider "aci" {
   insecure = true
 }
 
+# Tenant Definition
 resource "aci_tenant" "terraform_tenant" {
   name        = "terraform_tenant"
   name_alias  = "tenant_for_terraform"
   description = "This tenant is created by terraform ACI provider"
 }
 
+# Networkin Definition
 resource "aci_bridge_domain" "bd_for_subnet" {
   tenant_dn   = "${aci_tenant.terraform_tenant.id}"
   name        = "bd_for_subnet"
@@ -32,6 +34,7 @@ resource "aci_subnet" "demosubnet" {
   virtual                             = "yes"
 }
 
+# App Profile Definition
 resource "aci_application_profile" "terraform_app" {
   tenant_dn  = "${aci_tenant.terraform_tenant.id}"
   name       = "terraform_app"
@@ -39,6 +42,7 @@ resource "aci_application_profile" "terraform_app" {
   prio       = "level1"
 }
 
+# EPG Definitions
 resource "aci_application_epg" "web" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "web"
