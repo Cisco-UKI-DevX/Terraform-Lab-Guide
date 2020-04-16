@@ -47,33 +47,47 @@ resource "aci_application_epg" "web" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "web"
   name_alias              = "web_epg"
+  relation_fv_rs_cons     = ["${aci_contract.web_to_app.name}", 
+                             "${aci_contract.any_to_log.name}"]
 }
 
 resource "aci_application_epg" "app" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "app"
   name_alias              = "web_epg"
+  relation_fv_rs_prov     = ["${aci_contract.web_to_app.name}"]
+  relation_fv_rs_cons     = ["${aci_contract.app_to_db.name}",
+                             "${aci_contract.app_to_auth.name}",
+                             "${aci_contract.any_to_log.name}"]
 }
 
 resource "aci_application_epg" "db_cache" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "db_cache"
   name_alias              = "db_cache_epg"
+  relation_fv_rs_prov     = ["${aci_contract.app_to_db.name}"]
+  relation_fv_rs_cons     = ["${aci_contract.cache_to_db.name}",
+                             "${aci_contract.any_to_log.name}"]
 }
 resource "aci_application_epg" "db" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "db"
   name_alias              = "db_epg"
+  relation_fv_rs_prov     = ["${aci_contract.cache_to_db.name}"]
+  relation_fv_rs_cons     = ["${aci_contract.any_to_log.name}"]     
 }
 resource "aci_application_epg" "log" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "log"
   name_alias              = "log_epg"
+  relation_fv_rs_prov     = ["${aci_contract.any_to_log.name}"]
 }
 resource "aci_application_epg" "auth" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
   name                    = "auth"
   name_alias              = "auth_epg"
+  relation_fv_rs_prov     = ["${aci_contract.app_to_auth.name}"]
+  relation_fv_rs_cons     = ["${aci_contract.any_to_log.name}"]
 }
 
 # Contract Definitions
