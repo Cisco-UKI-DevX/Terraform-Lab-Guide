@@ -39,17 +39,20 @@ resource "aci_application_profile" "terraform_app" {
   prio       = "level1"
 }
 
-resource "aci_application_epg" "application_epg1" {
+resource "aci_application_epg" "web" {
     application_profile_dn  = "${aci_application_profile.terraform_app.id}"
-    name                          = "db_epg"
+    name                    = "web"
+    name_alias              = "web_epg"
   }
 
-resource "aci_application_epg" "application_epg2" {
+resource "aci_application_epg" "app" {
     application_profile_dn  = "${aci_application_profile.terraform_app.id}"
-    name                          = "web_epg"
+    name                    = "app"
+    name_alias              = "web_epg"
   }
 
-resource "aci_application_epg" "application_epg3" {
+resource "aci_application_epg" "db" {
     application_profile_dn  = "${aci_application_profile.terraform_app.id}"
-    name                          = "log_epg"
+    name                    = "db"
+    name_alias              = "db_epg"
   }
