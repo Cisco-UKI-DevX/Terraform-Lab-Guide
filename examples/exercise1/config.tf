@@ -75,3 +75,34 @@ resource "aci_application_epg" "auth" {
   name                    = "auth"
   name_alias              = "auth_epg"
 }
+
+# Contract Definitions
+resource "aci_contract" "web_to_app" {
+  tenant_dn = "${aci_tenant.tenant.id}"
+  name      = "web_to_app"
+  scope     = "tenant"
+}
+
+resource "aci_contract" "app_to_db" {
+  tenant_dn = "${aci_tenant.tenant.id}"
+  name      = "app_to_db"
+  scope     = "tenant"
+}
+
+resource "aci_contract" "app_to_auth" {
+  tenant_dn = "${aci_tenant.tenant.id}"
+  name      = "app_to_auth"
+  scope     = "tenant"
+}
+
+resource "aci_contract" "cache_to_db" {
+  tenant_dn = "${aci_tenant.tenant.id}"
+  name      = "cache_to_db"
+  scope     = "tenant"
+}
+
+resource "aci_contract" "any_to_log" {
+  tenant_dn = "${aci_tenant.tenant.id}"
+  name      = "any_to_log"
+  scope     = "tenant"
+}
