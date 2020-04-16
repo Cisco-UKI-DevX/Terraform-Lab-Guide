@@ -36,7 +36,6 @@ resource "aci_bridge_domain" "bd_for_subnet" {
   tenant_dn   = "${aci_tenant.terraform_tenant.id}"
   name        = "bd_for_subnet"
   description = "This bridge domain is created by terraform ACI provider"
-  mac         = "00:22:BD:F8:19:FF"
   relation_fv_rs_ctx = "${aci_vrf.default.name}"
 }
 
