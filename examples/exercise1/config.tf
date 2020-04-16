@@ -95,31 +95,31 @@ resource "aci_application_epg" "auth" {
 
 # Contract Definitions
 resource "aci_contract" "web_to_app" {
-  tenant_dn = "${aci_tenant.tenant.id}"
+  tenant_dn = "${aci_tenant.terraform_tenant.id}"
   name      = "web_to_app"
   scope     = "tenant"
 }
 
 resource "aci_contract" "app_to_db" {
-  tenant_dn = "${aci_tenant.tenant.id}"
+  tenant_dn = "${aci_tenant.terraform_tenant.id}"
   name      = "app_to_db"
   scope     = "tenant"
 }
 
 resource "aci_contract" "app_to_auth" {
-  tenant_dn = "${aci_tenant.tenant.id}"
+  tenant_dn = "${aci_tenant.terraform_tenant.id}"
   name      = "app_to_auth"
   scope     = "tenant"
 }
 
 resource "aci_contract" "cache_to_db" {
-  tenant_dn = "${aci_tenant.tenant.id}"
+  tenant_dn = "${aci_tenant.terraform_tenant.id}"
   name      = "cache_to_db"
   scope     = "tenant"
 }
 
 resource "aci_contract" "any_to_log" {
-  tenant_dn = "${aci_tenant.tenant.id}"
+  tenant_dn = "${aci_tenant.terraform_tenant.id}"
   name      = "any_to_log"
   scope     = "tenant"
 }
@@ -158,7 +158,7 @@ resource "aci_contract_subject" "only_db_cache_traffic" {
 # Contract Filters
 ## HTTPS Traffic
 resource "aci_filter" "https_traffic" {
-  tenant_dn = "${aci_tenant.tenant.id}"
+  tenant_dn = "${aci_tenant.terraform_tenant.id}"
   name      = "https_traffic"
 }
 
@@ -174,7 +174,7 @@ resource "aci_filter_entry" "https" {
 }
 ## DB Traffic
 resource "aci_filter" "db_traffic" {
-  tenant_dn = "${aci_tenant.tenant.id}"
+  tenant_dn = "${aci_tenant.terraform_tenant.id}"
   name      = "db_traffic"
 }
 
