@@ -12,6 +12,7 @@ provider "aci" {
 # Variables
 locals {
   vmm_vcenter        = "uni/vmmp-VMware/dom-My-vCenter"
+  phys_db            = "uni/phys-phys"
 }
 
 # Tenant Definition
@@ -86,7 +87,7 @@ resource "aci_application_epg" "db" {
   name_alias              = "MariaDB"
   relation_fv_rs_prov     = ["${aci_contract.cache_to_db.name}"]
   relation_fv_rs_cons     = ["${aci_contract.any_to_log.name}"]     
-  relation_fv_rs_dom_att  = ["${local.vmm_vcenter}"]
+  relation_fv_rs_dom_att  = ["${local.phys_db}"]
 }
 resource "aci_application_epg" "log" {
   application_profile_dn  = "${aci_application_profile.terraform_app.id}"
