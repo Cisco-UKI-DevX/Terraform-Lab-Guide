@@ -1,11 +1,12 @@
 # Configure provider with your Cisco ACI credentials
 provider "aci" {
+  version = "0.3.4"
   # Cisco ACI user name
   username = "admin"
   # Cisco ACI password
   password = "C1sco12345"
   # Cisco ACI URL
-  url      = "https://198.18.133.200"
+  url      = "https://10.10.20.14"
   insecure = true
 }
 
